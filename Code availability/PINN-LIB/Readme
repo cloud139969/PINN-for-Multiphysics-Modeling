@@ -1,0 +1,15 @@
+1. System requirements
+Python 3.12.4
+PyTorch 2.2.2+cu118 True 11.8
+
+
+2. Demo
+We provide a detailed demo of our code：
+1. Set the cell and operating parameters in Constant.py.
+2. Before running, ensure that all required files are present in the working directory.
+3. CPINN_NET.py defines the sub-network architectures.
+4. Data_gets2.py and NTK_algo.py implement the sampling and loss-optimization algorithms, respectively, and are called in Main.py.
+5. Run the main script Main.py to solve the LIB multiphysics model.
+
+
+Make sure all dependencies listed in requirements.txt are installed before running the scripts.
