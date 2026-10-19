@@ -100,11 +100,14 @@ def create_component():
     ntk_handler_cl = NTKHandler(update_every=200, momentum=0.8, subset_size=256)  # 128
     ntk_handler_gdl = NTKHandler(update_every=200, momentum=0.8, subset_size=256)
 
-    # scheduler = torch.optim.lr_scheduler.StepLR(optimizer1, step_size=8000, gamma=0.2)
-    # return (PINN_mw, PINN_lq_gdl, PINN_lq_cl, PINN_vp_gdl, PINN_vp_cl, PINN_T_gdl, PINN_T_cl,
-    #         awl1, awl2, awl3, awl4, optimizer1)
+    # scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
+    #     optimizer1,
+    #     T_0=2000,  # 周期更长，更稳
+    #     T_mult=1,  # 周期不变
+    #     eta_min=1e-4
+    # )
     return PINN_h2, PINN_o2, PINN_s_gdl, PINN_s_cl, PINN_T, PINN_I, optimizer1, ntk_handler_cl, ntk_handler_gdl
-
+    # return PINN_h2, PINN_o2, PINN_s_gdl, PINN_s_cl, PINN_T, PINN_I, optimizer1, ntk_handler_cl, ntk_handler_gdl, scheduler
 
 ##
 components = [create_component() for _ in range(num_cells)]
